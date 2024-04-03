@@ -1,5 +1,11 @@
-package org.example.demo;/**
-  *@author liyunfei
-  **/    
-    public class DemoAppStarter {
+package org.example.demo;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/**
+ * @author liyunfei
+ **/
+@SpringBootApplication
+public class DemoAppStarter {
+
 }
