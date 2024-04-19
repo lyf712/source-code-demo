@@ -21,13 +21,15 @@ public class MybatisBaseSample {
         // 1. 加载配置文件（config文件）
         String configFile = "mybatis/mybatis-config.xml";
         InputStream inputStream = null;
-        
+        // 对ClassLoader进行了加载，RPC项目中进行对Class的扫描：直接采用的
+        // Thread.currentThread().getContextClassLoader().getResourceAsStream()
+        // JVM的基础类加载知识
         inputStream = Resources.getResourceAsStream(configFile);
         
         // 2. 构建SQL Session org.apache.ibatis.session.SqlSessionFactory
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         //分析mybatis-config.xml 则需去分析该类Configuration: sqlSessionFactory.getConfiguration()
-        
+       
         // 3.数据读取
         // 注意openSession() , 是否基于Connection，是否自动提交，执行类型等。
         try (SqlSession session = sqlSessionFactory.openSession()) {

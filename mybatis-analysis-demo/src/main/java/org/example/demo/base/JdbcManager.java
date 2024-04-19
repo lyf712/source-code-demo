@@ -9,6 +9,7 @@ import java.sql.SQLException;
 /**
  * @author liyunfei
  **/
+@LyfAnnotation
 public class JdbcManager {
     
     private volatile Connection connection;
