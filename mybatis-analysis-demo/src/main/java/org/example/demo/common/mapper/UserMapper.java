@@ -1,6 +1,7 @@
 package org.example.demo.common.mapper;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 import org.example.demo.common.model.UserDO;
 
 import java.util.List;
@@ -20,4 +21,7 @@ public interface UserMapper {
     
     @Select("SELECT * FROM `user` WHERE `id` = #{id}")
     UserDO queryUserById(Integer id);
+    
+    @SelectProvider(type = UserMapperProvider.class,method = "queryUserById")
+    UserDO queryUserByIdByProvider(Integer id);
 }

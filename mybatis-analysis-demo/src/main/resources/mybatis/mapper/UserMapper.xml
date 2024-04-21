@@ -5,12 +5,20 @@
 <!--    <sql id="showDatabase">-->
 <!--        show databases;-->
 <!--    </sql>-->
-    
+<!--    <sql id="limitPage">-->
+<!--      -->
+<!--    </sql>-->
     <select id="queryUserBySchoolName" resultType="org.example.demo.common.model.UserDO">
         SELECT * FROM `user`
         <if test="schoolName != null">
             WHERE school_name = #{schoolName}
         </if>
+        
+<!--        <include refid="limitPage">-->
+<!--        -->
+<!--        </include>-->
     </select>
+    
+<!--    <parameterMap id="test" type=""></parameterMap>-->
     
 </mapper>

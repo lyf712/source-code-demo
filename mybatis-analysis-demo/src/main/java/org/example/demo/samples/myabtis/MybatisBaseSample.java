@@ -49,6 +49,9 @@ public class MybatisBaseSample {
             System.out.printf(">>>>测试>>>> Annotation Query %s \n",userDO);
        
             //System.out.println();
+    
+            //UserDO userDOByProvider = userMapper.queryUserByIdByProvider(1);
+//            System.out.printf(">>>>测试>>>> Annotation Query By Provider %s \n",userDOByProvider);
             return userList;
         }
         

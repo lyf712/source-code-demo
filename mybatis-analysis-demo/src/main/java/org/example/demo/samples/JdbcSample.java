@@ -5,6 +5,7 @@ import org.example.demo.common.model.UserDO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -61,6 +62,12 @@ public class JdbcSample {
             "SELECT * FROM `user` WHERE school_name = '" + userParam.getSchoolName() + "';";
         ResultSet resultSet = statement.executeQuery(sql);
         
+        String sql2 =
+            "SELECT * FROM `user` WHERE school_name = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql2);
+        //preparedStatement.executeQuery()
+        preparedStatement.setString(1,"");
+    
         // step6:处理数据结果
         // 参数的获取（根据字段名） --- 解析分析 Java对象 和 数据表的映射--
         List<UserDO> userDOList = new ArrayList<>();
