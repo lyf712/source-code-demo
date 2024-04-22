@@ -7,8 +7,9 @@
     <!--解析为对应的Configuration类-->
     
     <!--全局变量-->
-    <properties>
+    <properties resource="mybatis/config.properties">
         <property name="GLOBAL_VAR" value="LYF"/>
+        <property name="username" value="xxxxx"/>
     </properties>
     
 <!--    <settings>-->
@@ -16,12 +17,14 @@
 <!--    </settings>-->
     
     <typeAliases>
-        <package name="org.example.demo"/>
+<!--        <package name="org.example.demo"/>-->
+<!--        <typeAlias alias="UserDO" type="org.example.demo.common.model.UserDO"/>-->
+        <package name="org.example.demo.common.model"/>
     </typeAliases>
     
     <plugins>
         <plugin interceptor="org.example.demo.samples.myabtis.plugin.MySimplePlugin">
-            <property name="test" value="这是一个测试插件："/>
+            <property name="test" value="这是一个测试插件：${GLOBAL_VAR} ::: ${username}"/>
         </plugin>
     </plugins>
     

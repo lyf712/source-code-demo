@@ -70,6 +70,13 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+    
+    
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.4.0</version>
+        </dependency>
         
     </dependencies>
     
