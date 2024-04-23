@@ -1,5 +1,6 @@
 package org.example.demo.docs;
 
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.example.demo.common.mapper.UserMapper;
@@ -13,7 +14,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.instrument.Instrumentation;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author liyunfei
@@ -24,6 +27,8 @@ public class GetStartedTest {
     
     private SqlSession session;
     
+    private Instrumentation instrumentation;
+    
     @Before
     public void setUp() {
         SqlSessionFactory sqlSessionFactory =
@@ -31,7 +36,8 @@ public class GetStartedTest {
         //        try (SqlSession session = sqlSessionFactory.openSession()) {
         //            userMapper =  session.getMapper(UserMapper.class);
         //        }
-        
+        Configuration configuration = sqlSessionFactory.getConfiguration();
+        System.out.printf("");
         session = sqlSessionFactory.openSession();
         if (session != null) {
             userMapper = session.getMapper(UserMapper.class);
@@ -86,13 +92,14 @@ public class GetStartedTest {
     }
     
     @Test
-    public void testSQL(){
+    public void testSQL() throws InterruptedException {
         UserExample userExample = new UserExample();
         userExample.setLimit(true);
         userExample.setLimitNum(5);
         List<AliasUser> aliasUsers = userMapper.queryAliasUsersByExample(userExample);
         Assert.assertNotNull(aliasUsers);
         Assert.assertTrue(aliasUsers.size()<=5);
+        TimeUnit.SECONDS.sleep(100);
     }
     
     private void print(Object o) {
