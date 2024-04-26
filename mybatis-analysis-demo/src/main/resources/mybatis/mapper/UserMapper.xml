@@ -16,6 +16,12 @@
         <result property="schoolName" column="school_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
     </resultMap>
     
+    <cache
+        eviction="FIFO"
+        flushInterval="60000"
+        size="512"
+        readOnly="true"/>
+    
 <!--    <sql id="showDatabase">-->
 <!--        show databases;-->
 <!--    </sql>-->
@@ -37,7 +43,7 @@
 <!--        </include>-->
     </select>
 
-    <select id="queryAliasUserById" resultType="User">
+    <select id="queryAliasUserById" resultType="User" useCache="true">
         SELECT * FROM `user`
         <if test="id != null">
             WHERE id = #{id}

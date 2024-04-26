@@ -29,6 +29,7 @@ public class SimpleConfigSqlSessionFactoryBuilder implements SimpleSqlSessionFac
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("development", transactionFactory, dataSource);
         Configuration configuration = new Configuration();
+        configuration.setCacheEnabled(true);
         // 添加Mapper
         configuration.addMapper(UserMapper.class);
         configuration.setEnvironment(environment);

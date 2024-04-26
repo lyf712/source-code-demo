@@ -15,6 +15,13 @@
 <!--    <settings>-->
 <!--        <setting name="" value=""/>-->
 <!--    </settings>-->
+<!--    <settings>-->
+<!--        <setting name="cache" value="en"/>-->
+<!--    </settings>-->
+    
+    <settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
     
     <typeAliases>
 <!--        <package name="org.example.demo"/>-->
@@ -22,11 +29,15 @@
         <package name="org.example.demo.common.model"/>
     </typeAliases>
     
-    <plugins>
-        <plugin interceptor="org.example.demo.samples.myabtis.plugin.MySimplePlugin">
-            <property name="test" value="这是一个测试插件：${GLOBAL_VAR} ::: ${username}"/>
-        </plugin>
-    </plugins>
+<!--    <plugins>-->
+<!--        <plugin interceptor="org.example.demo.samples.myabtis.plugin.MySimplePlugin">-->
+<!--            <property name="test" value="这是一个测试插件：${GLOBAL_VAR} ::: ${username}"/>-->
+<!--        </plugin>-->
+<!--    -->
+<!--        <plugin interceptor="org.example.demo.samples.myabtis.plugin.MySamplePlugin2">-->
+<!--            <property name="test" value="这是一个测试插件2：${GLOBAL_VAR} ::: ${username}"/>-->
+<!--        </plugin>-->
+<!--    </plugins>-->
     
     <environments default="development">
         <environment id="development">
