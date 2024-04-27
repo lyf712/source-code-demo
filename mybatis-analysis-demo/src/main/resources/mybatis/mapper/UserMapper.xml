@@ -2,12 +2,36 @@
 <!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.example.demo.common.mapper.UserMapper">
 
+    <parameterMap id="Base_User_Param_Map" type="User">
+        <parameter property="id" javaType="java.lang.Integer" jdbcType="BIGINT"/>
+        <parameter property="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <parameter property="email"  javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <parameter property="schoolName" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </parameterMap>
+    
+    <resultMap id="Base_User_Map" type="User">
+        <result property="id" column="id" javaType="java.lang.Integer" jdbcType="BIGINT"/>
+        <result property="name" column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="email" column="email" javaType="java.lang.String" jdbcType="VARCHAR"/>
+        <result property="schoolName" column="school_name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <cache
+        eviction="FIFO"
+        flushInterval="60000"
+        size="512"
+        readOnly="true"/>
+    
 <!--    <sql id="showDatabase">-->
 <!--        show databases;-->
 <!--    </sql>-->
 <!--    <sql id="limitPage">-->
 <!--      -->
 <!--    </sql>-->
+    <sql id="Limit_Page">
+       limit
+    </sql>
+    
     <select id="queryUserBySchoolName" resultType="org.example.demo.common.model.UserDO">
         SELECT * FROM `user`
         <if test="schoolName != null">
@@ -18,7 +42,41 @@
 <!--        -->
 <!--        </include>-->
     </select>
+
+    <select id="queryAliasUserById" resultType="User" useCache="true">
+        SELECT * FROM `user`
+        <if test="id != null">
+            WHERE id = #{id}
+        </if>
+    </select>
     
+    <select id="queryAliasUsers" resultMap="Base_User_Map" fetchSize="5">
+        SELECT * FROM `user`
+        <if test="id != null">
+            WHERE id = #{id}
+        </if>
+<!--        <include refid="Limit_Page"/>-->
+    </select>
 <!--    <parameterMap id="test" type=""></parameterMap>-->
+<!--    -->
     
+    <select id="queryAliasUsersByHandler" resultMap="Base_User_Map" fetchSize="5">
+        SELECT * FROM `user`
+        <!--        <include refid="Limit_Page"/>-->
+    </select>
+    
+    <!--java.lang.String-->
+    <select id="queryAliasUsersByHandler2" resultType="User" fetchSize="5">
+        SELECT * FROM `user`
+        <!--        <include refid="Limit_Page"/>-->
+    </select>
+    
+    <select id="queryAliasUsersByExample" parameterType="UserExample" resultMap="Base_User_Map" fetchSize="5">
+        SELECT * FROM `user`
+        <if test="isLimit">
+            <include refid="Limit_Page"/>
+            #{limitNum}
+        </if>
+        <!--        <include refid="Limit_Page"/>-->
+    </select>
 </mapper>

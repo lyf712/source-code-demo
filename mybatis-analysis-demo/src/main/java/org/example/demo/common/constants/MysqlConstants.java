@@ -5,6 +5,8 @@ package org.example.demo.common.constants;
  **/
 public interface MysqlConstants {
      
+     String DRIVER = "com.mysql.cj.jdbc.Driver";
+     
      /**
       * JDBC连接；
       * 1.jdbc:mysql协议--属于应用层？

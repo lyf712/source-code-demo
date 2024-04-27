@@ -2,7 +2,10 @@ package org.example.demo.common.mapper;
 
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
+import org.apache.ibatis.session.ResultHandler;
+import org.example.demo.common.model.AliasUser;
 import org.example.demo.common.model.UserDO;
+import org.example.demo.common.model.UserExample;
 
 import java.util.List;
 
@@ -24,4 +27,16 @@ public interface UserMapper {
     
     @SelectProvider(type = UserMapperProvider.class,method = "queryUserById")
     UserDO queryUserByIdByProvider(Integer id);
+    
+    AliasUser queryAliasUserById(Integer id);
+    
+    List<AliasUser> queryAliasUsers();
+    
+    List<AliasUser> queryAliasUsersByHandler(ResultHandler<AliasUser> resultHandler);
+    
+    void  queryAliasUsersByHandler2(ResultHandler<AliasUser> resultHandler);
+    
+    List<AliasUser> queryAliasUsersByExample(UserExample userExample);
+    
+    
 }
