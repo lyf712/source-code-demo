@@ -60,6 +60,17 @@
 <!--    <parameterMap id="test" type=""></parameterMap>-->
 <!--    -->
     
+    <select id="queryAliasUsersByHandler" resultMap="Base_User_Map" fetchSize="5">
+        SELECT * FROM `user`
+        <!--        <include refid="Limit_Page"/>-->
+    </select>
+    
+    <!--java.lang.String-->
+    <select id="queryAliasUsersByHandler2" resultType="User" fetchSize="5">
+        SELECT * FROM `user`
+        <!--        <include refid="Limit_Page"/>-->
+    </select>
+    
     <select id="queryAliasUsersByExample" parameterType="UserExample" resultMap="Base_User_Map" fetchSize="5">
         SELECT * FROM `user`
         <if test="isLimit">
