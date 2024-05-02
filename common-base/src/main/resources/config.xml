@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <brandName>Haier</brandName>
+    
+    <factory>
+        <packageName>com.lyf.base.design.create.factory</packageName>
+        <factoryName>HaierTvFactory</factoryName>
+    </factory>
+    
+</config>

@@ -12,6 +12,7 @@
     <modules>
         <module>mybatis-analysis-demo</module>
         <module>spring-analysis-demo</module>
+        <module>common-base</module>
     </modules>
     
     <properties>
