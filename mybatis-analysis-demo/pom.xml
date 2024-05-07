@@ -71,7 +71,27 @@
             <version>${lombok.version}</version>
         </dependency>
     
+        <!--映射转换-->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.5.Final</version>
+        </dependency>
     
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.5.5.Final</version> <!-- 替换为最新版本 -->
+            <scope>provided</scope>
+        </dependency>
+    
+        <!--国内Hutool工具包：正式开发项目中使用是否被运行？-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.25</version>
+        </dependency>
+        
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
